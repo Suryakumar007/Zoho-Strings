@@ -1,0 +1,40 @@
+### 
+
+
+public static String helper(char[] c)
+    {
+        StringBuilder sb = new StringBuilder();
+        Stack<Character> tempStack = new Stack<Character>();
+
+        for(char i : c)
+        {
+            if(!(tempStack.isEmpty()) && tempStack.peek()!=i )
+            {
+                    sb.append(tempStack.size()).append(tempStack.peek());
+                    tempStack.clear();
+            }
+
+                tempStack.push(i);
+
+        }
+
+        if (!tempStack.isEmpty())
+        {
+            sb.append(tempStack.size()).append(tempStack.peek());
+        }
+
+        return sb.toString();
+
+    }
+
+    public static void decodePattern(int n)
+    {
+        String a=helper("1".toCharArray());
+        for(int i=1;i<n;i++)
+        {
+            a=helper(a.toCharArray());
+        }
+
+        System.out.println(a);
+
+    }
